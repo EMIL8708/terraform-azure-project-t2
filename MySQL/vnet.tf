@@ -5,7 +5,7 @@ resource "azurerm_resource_group" "example" {
 }
 
 # Create a virtual network within the resource group
-resource "azurerm_virtual_network" "example2023" {
+resource "azurerm_virtual_network" "example" {
   name                = "example-network"
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
@@ -37,7 +37,7 @@ resource "azurerm_subnet" "subnet3" {
 }
 
 
-resource "azurerm_virtual_network" "example2024" {
+resource "azurerm_virtual_network" "example" {
   name                = "example-network"
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
