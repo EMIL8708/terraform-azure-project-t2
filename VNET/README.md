@@ -1,4 +1,4 @@
-# Vnet 
+# VNET 
 Next we created main.tf configuration file. Vnet is the Virtual Network which will include subnet that will associated with public ip. 
 
 Steps: 
