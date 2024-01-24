@@ -22,3 +22,4 @@ resource "azurerm_sql_server" "example-murat" {
     environment = "production"
   }
 }
+
