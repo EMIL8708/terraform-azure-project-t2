@@ -3,18 +3,18 @@ resource "azurerm_resource_group" "azure-murat" {
   location = "West Europe"
 }
 
-resource "azurerm_storage_account" "example-murat" {
+resource "azurerm_storage_account" "examplemurat" {
   name                     = "examplesa-murat"
-  resource_group_name      = azurerm_resource_group.example-murat.name
-  location                 = azurerm_resource_group.example-murat.location
+  resource_group_name      = azurerm_resource_group.examplemurat.name
+  location                 = azurerm_resource_group.examplemurat.location
   account_tier             = "Standard"
   account_replication_type = "LRS"
 }
 
-resource "azurerm_sql_server" "example-murat" {
+resource "azurerm_sql_server" "examplemurat" {
   name                         = "mssqlserver"
-  resource_group_name          = azurerm_resource_group.example-murat.name
-  location                     = azurerm_resource_group.example-murat.location
+  resource_group_name          = azurerm_resource_group.examplemurat.name
+  location                     = azurerm_resource_group.examplemurat.location
   version                      = "12.0"
 
 
