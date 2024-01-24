@@ -2,7 +2,7 @@
 Next we created main.tf configuration file. VNET is the Virtual Network which will include subnets that will associated with public IP. 
 
 Steps: 
-Use resource "azurerm_resource_group" "wordpress" to create the Vnet
+Use resource "azurerm_resource_group" "wordpress" to create the VNET.
 Create main.tf file in VNET folder with Makefile, output.tf, provider.tf, variable.tf, .gitignore and README.md files 
 
 ```
