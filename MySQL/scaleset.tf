@@ -1,5 +1,5 @@
-resource "azurerm_subnet" "subnet2" {
-  name                 = "subnet2"
+resource "azurerm_subnet" "internal" {
+  name                 = "internal"
   resource_group_name  = azurerm_resource_group.example.name
   virtual_network_name = azurerm_virtual_network.example.name
   address_prefixes     = ["10.0.2.0/24"]
@@ -35,7 +35,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
     primary = true
 
     ip_configuration {
-      name      = "subnet2"
+      name      = "internal"
       primary   = true
       subnet_id = azurerm_subnet.internal.id
     }
