@@ -5,6 +5,7 @@ Steps:
 Use resource "azurerm_resource_group" "wordpress" to create the Vnet
 Create main.tf file in VNET folder with Makefile, output.tf, provider.tf, variable.tf, .gitignore and README.md files 
 
+```
 resource "azurerm_resource_group" "wordpress" {
   name     = "wordpress-resources"
   location = var.location
@@ -34,8 +35,7 @@ resource "azurerm_subnet" "subnet2" {
   virtual_network_name = azurerm_virtual_network.wordpress.name
   address_prefixes     = ["10.0.2.0/24"]
 }
-
-
+```
 resource "azurerm_subnet" "subnet3" {
   name                 = "subnet3"
   resource_group_name  = azurerm_resource_group.wordpress.name
