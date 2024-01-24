@@ -1,6 +1,6 @@
 variable "location" {
   description = "The location where resources will be created"
-  default     = "brazilsouth"
+  default     = "us-east-1"
 }
 variable "tags" {
   description = "A map of the tags to use for the resources that are deployed"
@@ -23,5 +23,5 @@ variable "database_admin_login" {
   default = "wordpress"
 }
 variable "database_admin_password" {
-  default = "w0rdpr3ss@p4ss"
+  default = "w0rdpr3s$"
 }
