@@ -1,25 +1,34 @@
-resource "azurerm_resource_group" "azure-murat" {
-  name     = "database-azure-murat"
+resource "azurerm_resource_group" "example" {
+  name     = "example-resources"
   location = "West Europe"
 }
 
-resource "azurerm_storage_account" "examplemurat" {
-  name                     = "examplesa-murat"
-  resource_group_name      = azurerm_resource_group.examplemurat.name
-  location                 = azurerm_resource_group.examplemurat.location
-  account_tier             = "Standard"
-  account_replication_type = "LRS"
+resource "random_string" "random" {
+  length           = 12
+  special          = false
+  override_special = "/@£$"
+  lower            = true 
+  upper            = false 
+  numeric          = false
 }
 
-resource "azurerm_sql_server" "examplemurat" {
-  name                         = "mssqlserver"
-  resource_group_name          = azurerm_resource_group.examplemurat.name
-  location                     = azurerm_resource_group.examplemurat.location
-  version                      = "12.0"
+resource "azurerm_mysql_server" "example" {
+  name                = "example-mysqlserver"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
 
+  administrator_login          = "mysqladminun"
+  administrator_login_password = "H@Sh1CoR3!"
 
-  tags = {
-    environment = "production"
-  }
+  sku_name   = "B_Gen5_2"
+  storage_mb = 5120
+  version    = "5.7"
+
+  auto_grow_enabled                 = true
+  backup_retention_days             = 7
+  geo_redundant_backup_enabled      = false
+  infrastructure_encryption_enabled = false
+  public_network_access_enabled     = true
+  ssl_enforcement_enabled           = true
+  ssl_minimal_tls_version_enforced  = "TLS1_2"
 }
-
