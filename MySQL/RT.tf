@@ -9,3 +9,4 @@ resource "azurerm_route_table" "example" {
     address_prefix = "10.0.1.0/24"
     next_hop_type  = "VnetLocal"
   }
+}
