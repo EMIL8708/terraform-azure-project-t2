@@ -23,12 +23,3 @@ resource "azurerm_lb_probe" "example" {
   port                = var.application_port
 }
 
-resource "azurerm_lb_rule" "lbnatrule" {
-  loadbalancer_id                = azurerm_lb.example.id
-  name                           = "http"
-  protocol                       = "Tcp"
-  frontend_port                  = var.application_port
-  backend_port                   = var.application_port
-  frontend_ip_configuration_name = "PublicIPAddress"
-  probe_id                       = azurerm_lb_probe.example.id
-}
