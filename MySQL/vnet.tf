@@ -29,7 +29,9 @@ resource "azurerm_subnet" "subnet3" {
 
 resource "azurerm_public_ip" "example" {
   allocation_method   = "Static"
-  location            = "East US"
   name                = "my_ip"
   resource_group_name = azurerm_resource_group.example.name
+  location            = var.location
+  domain_name_label   = random_string.fqdn.result
+  tags                = var.tags
 }
