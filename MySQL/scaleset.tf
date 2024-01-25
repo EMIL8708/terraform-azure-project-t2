@@ -25,11 +25,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
     version   = "latest"
   }
 
-data "azurerm_public_ip" "example" {
-  name                = "name_of_public_ip"
-  resource_group_name = "name_of_resource_group"
-}
-
   os_disk {
     storage_account_type = "Standard_LRS"
     caching              = "ReadWrite"
