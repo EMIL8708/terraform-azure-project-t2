@@ -1,9 +1,4 @@
-resource "azurerm_subnet" "internal" {
-  name                 = "internal"
-  resource_group_name  = azurerm_resource_group.example.name
-  virtual_network_name = azurerm_virtual_network.example.name
-  address_prefixes     = ["10.0.4.0/24"]
-}
+
 
 resource "azurerm_linux_virtual_machine_scale_set" "example" {
   name                = "example-vmss"
@@ -35,9 +30,9 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
     primary = true
 
     ip_configuration {
-      name      = "internal"
+      name      = "subnet3"
       primary   = true
-      subnet_id = azurerm_subnet.internal.id
+      subnet_id = azurerm_subnet.subnet3.id
       load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.bpepool.id]   
     }
   }
