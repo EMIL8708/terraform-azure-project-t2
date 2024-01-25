@@ -30,6 +30,6 @@ resource "azurerm_subnet" "subnet3" {
 resource "azurerm_public_ip" "example" {
   allocation_method   = "Static"
   location            = "East US"
-  name                = azurerm_public_ip.example
+  name                = azurerm_public_ip.example.name
   resource_group_name = azurerm_resource_group.example.name
 }
