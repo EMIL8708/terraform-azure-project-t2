@@ -1,3 +1,8 @@
+variable "ssh_public_key_path" {
+  description = "Path to the SSH public key file"
+  type        = string
+  default     = "/home/emil/.ssh/id_rsa.pub"  # Update with the correct path to your SSH public key file
+}
 variable "location" {
   description = "The location where resources will be created"
   type        = string
