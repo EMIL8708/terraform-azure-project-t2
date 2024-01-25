@@ -29,5 +29,5 @@ resource "azurerm_subnet" "subnet3" {
 
 data "azurerm_public_ip" "example" {
   name                = "example"
-  resource_group_name = "example-resources"
+  resource_group_name = azurerm_resource_group.example.name
 }
