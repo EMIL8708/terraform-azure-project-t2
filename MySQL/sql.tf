@@ -29,24 +29,24 @@ resource "azurerm_mysql_server" "example" {
 }
 
 # Create MySql DataBase
-resource "azurerm_mysql_database" "wordpress" {
+resource "azurerm_mysql_database" "example" {
   name                = var.dbname
-  resource_group_name = azurerm_resource_group.wordpress.name
-  server_name         = azurerm_mysql_server.wordpress.name
+  resource_group_name = azurerm_resource_group.example.name
+  server_name         = azurerm_mysql_server.example.name
   charset             = "utf8"
   collation           = "utf8_unicode_ci"
 }
 
 # Config MySQL Server Firewall Rule
-resource "azurerm_mysql_firewall_rule" "wordpress" {
-  name                = "wordpress-mysql-firewall-rule"
-  resource_group_name = azurerm_resource_group.wordpress.name
-  server_name         = azurerm_mysql_server.wordpress.name
-  start_ip_address    = azurerm_public_ip.wordpress.ip_address
-  end_ip_address      = azurerm_public_ip.wordpress.ip_address
+resource "azurerm_mysql_firewall_rule" "example" {
+  name                = "example-mysql-firewall-rule"
+  resource_group_name = azurerm_resource_group.example.name
+  server_name         = azurerm_mysql_server.example.name
+  start_ip_address    = azurerm_public_ip.example.ip_address
+  end_ip_address      = azurerm_public_ip.example.ip_address
 }
 
-data "azurerm_mysql_server" "wordpress" {
-  name                = azurerm_mysql_server.wordpress.name
-  resource_group_name = azurerm_resource_group.wordpress.name
+data "azurerm_mysql_server" "example" {
+  name                = azurerm_mysql_server.example.name
+  resource_group_name = azurerm_resource_group.example.name
 }
