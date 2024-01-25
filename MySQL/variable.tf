@@ -7,7 +7,7 @@ variable "ssh_public_key_path" {
 variable "location" {
   description = "The location where resources will be created"
   type        = string
-  default     = ""
+  default     = "eastus"
 }
 
 variable "tags" {
