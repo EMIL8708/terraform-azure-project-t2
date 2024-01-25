@@ -6,7 +6,6 @@ output ss_id {
     value = azurerm_linux_virtual_machine_scale_set.example.id
 }
 
-
 output rg_id {
     value = azurerm_resource_group.example.id
 }
