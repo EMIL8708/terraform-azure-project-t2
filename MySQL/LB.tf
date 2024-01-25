@@ -16,6 +16,7 @@ resource "azurerm_lb_backend_address_pool" "bpepool" {
   name            = "BackEndAddressPool"
 }
 
+
 resource "azurerm_lb_probe" "example" {
   loadbalancer_id     = azurerm_lb.example.id
   name                = "example-probe"
