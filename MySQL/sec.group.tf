@@ -31,6 +31,6 @@ resource "azurerm_network_security_group" "example" {
 
 #Assigning a security group to all existing subnets
 resource "azurerm_subnet_network_security_group_association" "nsg-assoc" {
-  subnet_id                 = azurerm_subnet.wordpress.id
+  subnet_id                 = azurerm_subnet.example.id
   network_security_group_id = azurerm_network_security_group.example.id
 }
