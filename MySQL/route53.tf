@@ -9,5 +9,5 @@ resource "aws_route53_record" "example" {
   name    = "blog.muratgroup.link"
   type    = "A"
   ttl     = 300
-  records = [azurerm_public_ip.example.ip_address]
+  records = [azurerm_public_ip.wordpress.ip_address]
 }
