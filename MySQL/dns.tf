@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "example" {
   name     = "example-resources"
-  location = "West Europe"
+  location = "US East"
 }
 
 resource "azurerm_dns_zone" "example" {
