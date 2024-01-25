@@ -10,4 +10,5 @@ resource "aws_route53_record" "example" {
   type    = "A"
   ttl     = 300
   records = [azurerm_public_ip.wordpress.ip_address]
+  
 }
