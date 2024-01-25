@@ -7,7 +7,10 @@ output ss_id {
 }
 
 
-
 output rg_id {
     value = azurerm_resource_group.example.id
+}
+
+output sql_id {
+    value = azurerm_mysql_server.example.id
 }
