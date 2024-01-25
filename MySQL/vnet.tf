@@ -29,7 +29,7 @@ resource "azurerm_subnet" "subnet3" {
 
 resource "azurerm_public_ip" "example" {
   allocation_method   = "Static"
-  name                = "my_ip"
+  name                = "Public-IP"
   resource_group_name = azurerm_resource_group.example.name
   location            = var.location
   domain_name_label   = azurerm_resource_group.example.name
