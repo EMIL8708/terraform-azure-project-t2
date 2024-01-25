@@ -30,6 +30,9 @@ resource "azurerm_subnet" "subnet3" {
   address_prefixes     = ["10.0.3.0/24"]
 }
 
-
+data "azurerm_public_ip" "example" {
+  name                = "name_of_public_ip"
+  resource_group_name = "name_of_resource_group"
+}
 
 
