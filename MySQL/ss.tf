@@ -13,11 +13,11 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   }
 
 
-  virtual_machine_profile {
+  
   os_profile {
     custom_data = file("custom_data.tpl")
     }
-  }
+  
 
 
   source_image_reference {
