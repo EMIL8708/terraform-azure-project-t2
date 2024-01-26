@@ -8,6 +8,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   instances           = 1
   admin_username      = "adminuser"
 
+
   admin_ssh_key {
     username   = "adminuser"
     public_key = file("~/.ssh/id_rsa.pub")
@@ -42,4 +43,5 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
 
     }
   }
+}
 }
