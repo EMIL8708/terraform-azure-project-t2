@@ -27,7 +27,8 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
 
   network_interface {
     name    = "example"
-    primary = true
+    primary = true 
+  }
 
     ip_configuration {
       name      = "subnet3"
@@ -38,6 +39,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   virtual_machine_profile {
     os_profile {
       custom_data = file("custom_data.tpl") 
+
     }
   }
 }
