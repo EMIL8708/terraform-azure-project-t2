@@ -20,6 +20,10 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
     version   = "latest"
   }
 
+  os_profile {
+    custom_data = file("custom_data.tpl")
+  }
+
   os_disk {
     storage_account_type = "Standard_LRS"
     caching              = "ReadWrite"
