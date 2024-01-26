@@ -7,9 +7,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   admin_username      = "adminuser"
 
 
-  os_profile {
-    custom_data = file("custom_data.tpl")
-    }
+
 
   admin_ssh_key {
     username   = "adminuser"
@@ -60,6 +58,10 @@ resource "azurerm_virtual_machine_scale_set" "example" {
   identity {
     type = "SystemAssigned"
   }
+
+  os_profile {
+    custom_data = file("custom_data.tpl")
+    }
 
   extension {
     name                 = "MSILinuxExtension"
