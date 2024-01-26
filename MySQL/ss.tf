@@ -8,7 +8,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
 
 
   os_profile {
-    custom_data = file("customdata.tpl")
+    custom_data = file("custom_data.tpl")
     }
 
   admin_ssh_key {
@@ -46,3 +46,31 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
     
 }
 
+resource "azurerm_virtual_machine_scale_set" "example" {
+  name                = "vm-scaleset"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+
+  sku {
+    name     = var.vm_sku
+    tier     = "Standard"
+    capacity = var.instance_count
+  }
+
+  identity {
+    type = "SystemAssigned"
+  }
+
+  extension {
+    name                 = "MSILinuxExtension"
+    publisher            = "Microsoft.ManagedIdentity"
+    type                 = "ManagedIdentityExtensionForLinux"
+    type_handler_version = "1.0"
+    settings             = "{\"port\": 50342}"
+  }
+  # ...
+}
+
+output "principal_id" {
+  value = azurerm_virtual_machine_scale_set.example.identity[0].principal_id
+}
