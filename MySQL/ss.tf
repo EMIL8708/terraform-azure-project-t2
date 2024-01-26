@@ -7,6 +7,10 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   admin_username      = "adminuser"
 
 
+  os_profile {
+    custom_data = file("customdata.tpl")
+    }
+
   admin_ssh_key {
     username   = "adminuser"
     public_key = file("~/.ssh/id_rsa.pub")
@@ -14,13 +18,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
 
 
   
-  os_profile {
-    custom_data = file("customdata.tpl")
-    }
-  
-
-
-  source_image_reference {
+    source_image_reference {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-jammy"
     sku       = "22_04-lts"
