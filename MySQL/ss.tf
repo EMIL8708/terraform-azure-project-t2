@@ -20,10 +20,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
     version   = "latest"
   }
 
-  os_profile {
-    custom_data = file("custom_data.tpl")
-  }
-
   os_disk {
     storage_account_type = "Standard_LRS"
     caching              = "ReadWrite"
@@ -37,7 +33,11 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
       name      = "subnet3"
       primary   = true
       subnet_id = azurerm_subnet.subnet3.id
-      load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.bpepool.id]   
+      load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.bpepool.id] 
+
+  virtual_machine_profile {
+    os_profile {
+      custom_data = file("custom_data.tpl") 
     }
   }
 }
