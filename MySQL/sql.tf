@@ -43,7 +43,7 @@ resource "azurerm_mysql_firewall_rule" "example" {
   resource_group_name = azurerm_resource_group.example.name
   server_name         = azurerm_mysql_server.example.name
   start_ip_address    = "0.0.0.0"
-  end_ip_address      = "255.255.255.255"
+  end_ip_address      = "0.0.0.0"
 }
 
 data "azurerm_mysql_server" "example" {
