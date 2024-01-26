@@ -6,10 +6,19 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   instances           = 1
   admin_username      = "adminuser"
 
+
   admin_ssh_key {
     username   = "adminuser"
     public_key = file("~/.ssh/id_rsa.pub")
   }
+
+
+  virtual_machine_profile {
+  os_profile {
+    custom_data = file("custom_data.tpl")
+    }
+  }
+
 
   source_image_reference {
     publisher = "Canonical"
@@ -23,11 +32,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
     caching              = "ReadWrite"
   }
 
-  virtual_machine_profile {
-  os_profile {
-    custom_data = file("custom_data.tpl")
-    }
-  }
+ 
   network_interface {
     name    = "example"
     primary = true
