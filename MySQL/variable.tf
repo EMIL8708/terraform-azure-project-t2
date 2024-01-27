@@ -1,7 +1,7 @@
 variable "ssh_public_key_path" {
   description = "Path to the SSH public key file"
   type        = string
-  default     = file("~/.ssh/id_rsa.pub")  # Update with the correct path to your SSH public key file
+  default     = "~/.ssh/id_rsa.pub"  # Update with the correct path to your SSH public key file
 }
 
 variable "location" {
