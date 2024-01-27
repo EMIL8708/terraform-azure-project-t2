@@ -60,6 +60,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   instances           = 2
   admin_username      = "adminuser"
   health_probe_id     = azurerm_lb_probe.example.id
+  custom_data         = filebase64("customdata.tpl")
 
   admin_ssh_key {
     username   = "adminuser"
