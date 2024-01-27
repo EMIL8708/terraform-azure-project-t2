@@ -108,7 +108,7 @@ resource "azurerm_virtual_machine_scale_set" "example" {
 
     ssh_keys {
       path     = "/home/myadmin/.ssh/authorized_keys"
-      key_data = file("~/.ssh/demo_key.pub")
+      key_data = file("~/.ssh/id_rsa.pub")
     }
   }
 
