@@ -1,4 +1,4 @@
-resource "azurerm_public_ip" "IGW" {
+resource "azurerm_public_ip" "igw" {
   name                = "Public-IP-IGW"
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
@@ -20,7 +20,7 @@ resource "azurerm_virtual_network_gateway" "example" {
 
   ip_configuration {
     name                          = "vnetGatewayConfig"
-    public_ip_address_id          = azurerm_public_ip.example.id
+    public_ip_address_id          = azurerm_public_ip.igw.id
     private_ip_address_allocation = "Dynamic"
     subnet_id                     = azurerm_subnet2.example.id
   }
