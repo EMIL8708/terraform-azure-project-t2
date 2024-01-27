@@ -50,9 +50,7 @@ resource "azurerm_lb_backend_address_pool" "bpepool" {
 resource "azurerm_lb_probe" "example" {
   loadbalancer_id = azurerm_lb.example.id
   name            = "http-probe"
-  protocol        = "Http"
-  request_path    = "/health"
-  port            = 8080
+  port            = 80
 }
 
 resource "azurerm_linux_virtual_machine_scale_set" "example" {
