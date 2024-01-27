@@ -26,12 +26,3 @@ resource "azurerm_subnet" "subnet3" {
   virtual_network_name = azurerm_virtual_network.example.name
   address_prefixes     = ["10.0.3.0/24"]
 }
-
-resource "azurerm_public_ip" "example" {
-  allocation_method   = "Static"
-  name                = "Public-IP"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = var.location
-  domain_name_label   = azurerm_resource_group.example.name
-  tags                = var.tags
-}
