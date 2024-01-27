@@ -77,10 +77,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
     caching              = "ReadWrite"
   }
 
-   os_profile {
-    custom_data = file("custom_data.tpl")
-    }
- 
+   
   network_interface {
     name    = "example"
     primary = true
