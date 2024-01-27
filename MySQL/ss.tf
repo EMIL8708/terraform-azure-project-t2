@@ -94,4 +94,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   os_profile {
     custom_data = file("custom_data.tpl")
 
+  }
+
 }
