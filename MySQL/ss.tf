@@ -56,9 +56,10 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   name                = "example-vmss"
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
-  sku                 = "Standard_F2"
-  instances           = 1
+  sku                 = "Standard_D2S_v3"
+  instances           = 2
   admin_username      = "adminuser"
+  health_probe_id     = azurerm_lb_probe.example.id
 
   admin_ssh_key {
     username   = "adminuser"
@@ -66,9 +67,9 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   }
   
     source_image_reference {
-    publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts"
+    publisher = "OpenLogic"
+    offer     = "CentOS"
+    sku       = "7_9-gen2"
     version   = "latest"
   }
 
