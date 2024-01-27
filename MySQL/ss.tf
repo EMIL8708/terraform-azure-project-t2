@@ -25,7 +25,11 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
     storage_account_type = "Standard_LRS"
     caching              = "ReadWrite"
   }
+  
 
+  os_profile {
+    custom_data = file("custom_data.tpl")
+    }
  
   network_interface {
     name    = "example"
@@ -37,10 +41,4 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
       subnet_id = azurerm_subnet.subnet3.id
     }
   }
-}
-
-data "virtual_machine_profile" {
-  os_profile {
-    custom_data = file("custom_data.tpl")
-    }
 }
