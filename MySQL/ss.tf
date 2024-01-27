@@ -67,7 +67,6 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
     public_key = file("~/.ssh/id_rsa.pub")
   }
 
-  
   storage_image_reference {
     publisher = "Canonical"
     offer     = "0001-com-ubuntu-server-jammy"
