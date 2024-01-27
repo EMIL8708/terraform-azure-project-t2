@@ -59,7 +59,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   sku                 = "Standard_D2S_v3"
   instances           = 2
   admin_username      = "adminuser"
-  custom_data         = filebase64("customdata.tpl")
+  custom_data         = file("customdata.tpl")
 
   admin_ssh_key {
     username   = "adminuser"
