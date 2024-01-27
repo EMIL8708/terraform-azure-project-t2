@@ -49,18 +49,18 @@ resource "azurerm_lb_probe" "example" {
   name            = "http-probe"
   protocol        = "Http"
   request_path    = "/health"
-  port            = 80
+  port            = 8080
 }
 
 resource "azurerm_linux_virtual_machine_scale_set" "example" {
   name                = "example-vmss"
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
-  sku                 = "Standard_D2S_v3"
+  sku                 = "Standard_F2"
   instances           = 1
   admin_username      = "adminuser"
-  custom_data         = filebase64("customdata.tpl")
   health_probe_id     = azurerm_lb_probe.example.id
+  custom_data         = filebase64("customdata.tpl")
 
   admin_ssh_key {
     username   = "adminuser"

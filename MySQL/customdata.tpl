@@ -27,3 +27,40 @@ sudo systemctl enable httpd
 # export WORDPRESS_DB_USER= "wordpress@${DB_SERVER_NAME}"
 # export WORDPRESS_DB_PASSWORD= "26F4QXHVYbBjC$WH2HAc"
 # export WORDPRESS_DB_NAME= "${DBNAME}"
+
+
+sudo apt update
+sudo apt install apache2 \
+                 ghostscript \
+                 libapache2-mod-php \
+                 mysql-server \
+                 php \
+                 php-bcmath \
+                 php-curl \
+                 php-imagick \
+                 php-intl \
+                 php-json \
+                 php-mbstring \
+                 php-mysql \
+                 php-xml \
+                 php-zip
+
+# Create the installation directory and download the file from WordPress.org:
+sudo mkdir -p /srv/www
+sudo chown www-data: /srv/www
+curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C /srv/www
+
+# Create Apache site for WordPress. Create /etc/apache2/sites-available/wordpress.conf with following lines:
+<VirtualHost *:80>
+    DocumentRoot /srv/www/wordpress
+    <Directory /srv/www/wordpress>
+        Options FollowSymLinks
+        AllowOverride Limit Options FileInfo
+        DirectoryIndex index.php
+        Require all granted
+    </Directory>
+    <Directory /srv/www/wordpress/wp-content>
+        Options FollowSymLinks
+        Require all granted
+    </Directory>
+</VirtualHost>
