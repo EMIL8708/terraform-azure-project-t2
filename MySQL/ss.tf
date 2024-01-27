@@ -106,9 +106,9 @@ resource "azurerm_virtual_machine_scale_set" "example" {
   os_profile_linux_config {
     disable_password_authentication = true
 
-    admin_ssh_key {
-    username   = "adminuser"
-    public_key = file("~/.ssh/id_rsa.pub")
+    ssh_keys {
+      path     = "/home/myadmin/.ssh/authorized_keys"
+      key_data = file("~/.ssh/demo_key.pub")
     }
   }
 
