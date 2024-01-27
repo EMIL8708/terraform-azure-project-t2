@@ -81,13 +81,13 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   network_interface {
     name    = "example"
     primary = true
+    network_security_group_id = azurerm_network_security_group.example.id
 
     ip_configuration {
       name      = "subnet3"
       primary   = true
       subnet_id = azurerm_subnet.subnet3.id
       load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.bpepool.id]
-      load_balancer_inbound_nat_rules_ids    = [azurerm_lb_nat_pool.lbnatpool.id]
     }
   }
 
