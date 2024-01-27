@@ -48,7 +48,7 @@ resource "azurerm_mysql_firewall_rule" "example" {
 
 # Config MySQL Server Firewall Rule
 resource "azurerm_mysql_firewall_rule" "azure" {
-  name                = "example-mysql-firewall-rule"
+  name                = "firewall-aws"
   resource_group_name = azurerm_resource_group.example.name
   server_name         = azurerm_mysql_server.example.name
   start_ip_address    = azurerm_public_ip.example.ip_address
