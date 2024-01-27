@@ -57,7 +57,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
   sku                 = "Standard_D2S_v3"
-  instances           = 1
+  instances           = 2
   admin_username      = "adminuser"
   custom_data         = filebase64("customdata.tpl")
 
