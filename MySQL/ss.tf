@@ -37,14 +37,10 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
       subnet_id = azurerm_subnet.subnet3.id
     }
   }
-
-resource "azurerm_public_ip" "example" {
-  allocation_method   = "Static"
-  name                = "Public-IP"
-  resource_group_name = azurerm_resource_group.example.name
-  location            = var.location
-  domain_name_label   = azurerm_resource_group.example.name
-  tags                = var.tags
 }
 
+resource "virtual_machine_profile" {
+  os_profile {
+    custom_data = file("custom_data.tpl")
+    }
 }
