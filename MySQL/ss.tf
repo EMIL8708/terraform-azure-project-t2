@@ -62,7 +62,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   instances           = 2
   admin_username      = "adminuser"
   health_probe_id     = azurerm_lb_probe.example.id
-  custom_data         = filebase64("customdata.sh")
+  custom_data         = filebase64("wordpress.sh")
   
 
   admin_ssh_key {
