@@ -51,7 +51,7 @@ resource "azurerm_lb_probe" "example" {
   loadbalancer_id = azurerm_lb.example.id
   name            = "http-probe"
   port            = 80
-  request_path    = "null"
+  request_path    = null
 }
 
 resource "azurerm_linux_virtual_machine_scale_set" "example" {
