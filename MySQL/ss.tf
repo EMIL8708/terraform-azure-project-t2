@@ -100,7 +100,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   provisioner "shell" {
 		inline = [
         #!/bin/bash 
-        # Work with Amazon AMI on this
+        # Work with Azure VM on this
         "sudo yum install httpd -y",
         "sudo yum install php php-mysql -y",
         "sudo systemctl restart httpd",
