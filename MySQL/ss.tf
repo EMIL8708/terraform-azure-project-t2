@@ -58,7 +58,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   name                = "example-vmss"
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
-  sku                 = "Standard_DS1_v2"
+  sku                 = "Standard_D2s_v3"
   instances           = 1
   admin_username      = "adminuser"
   health_probe_id     = azurerm_lb_probe.example.id
@@ -72,8 +72,8 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
 
   source_image_reference {
     publisher = "Canonical"
-    offer     = "0001-com-ubuntu-server-jammy"
-    sku       = "22_04-lts"
+    offer     = "0001-com-ubuntu-server-focal"
+    sku       = "20_04-lts-gen2"
     version   = "latest"
   }
 
