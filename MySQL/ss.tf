@@ -97,25 +97,21 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
     }
   }
 
-  provisioner "shell" {
-		inline = [
-        #!/bin/bash 
-        # Work with Azure VM on this
-        "sudo yum install httpd -y",
-        "sudo yum install php php-mysql -y",
-        "sudo systemctl restart httpd",
-        "sudo systemctl enable httpd",
-        "sudo yum install wget -y",
-        "sudo wget https://wordpress.org/wordpress-4.0.32.tar.gz",
-        "sudo tar -xf wordpress-4.0.32.tar.gz -C /var/www/html/",
-        "sudo mv /var/www/html/wordpress/* /var/www/html/",
-        "sudo chown -R apache:apache /var/www/html/",
-        "sudo systemctl restart httpd"
-		]
-	}
-	provisioner "breakpoint" {
-		note = "Waiting for your verification"
-	}
+  
+  #!/bin/bash 
+  # Work with Azure VM on this
+  "sudo yum install httpd -y",
+  "sudo yum install php php-mysql -y",
+  "sudo systemctl restart httpd",
+  "sudo systemctl enable httpd",
+  "sudo yum install wget -y",
+  "sudo wget https://wordpress.org/wordpress-4.0.32.tar.gz",
+  "sudo tar -xf wordpress-4.0.32.tar.gz -C /var/www/html/",
+  "sudo mv /var/www/html/wordpress/* /var/www/html/",
+  "sudo chown -R apache:apache /var/www/html/",
+  "sudo systemctl restart httpd"
+	
+	
 
 }
 
