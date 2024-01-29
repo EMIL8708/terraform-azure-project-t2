@@ -1,13 +1,23 @@
- #!/bin/bash 
- # Work with Azure VM on this
-  "sudo yum install httpd -y",
-  "sudo yum install php php-mysql -y",
-  "sudo systemctl restart httpd",
-  "sudo systemctl enable httpd",
-  "sudo yum install wget -y",
-  "sudo wget https://wordpress.org/wordpress-4.0.32.tar.gz",
-  "sudo tar -xf wordpress-4.0.32.tar.gz -C /var/www/html/",
-  "sudo mv /var/www/html/wordpress/* /var/www/html/",
-  "sudo chown -R apache:apache /var/www/html/",
-  "sudo systemctl restart httpd" 
+#!/bin/bash 
+# install PHP and Apache, use following command:
+sudo apt update
+sudo apt install apache2 \
+                 ghostscript \
+                 libapache2-mod-php \
+                 mysql-server \
+                 php \
+                 php-bcmath \
+                 php-curl \
+                 php-imagick \
+                 php-intl \
+                 php-json \
+                 php-mbstring \
+                 php-mysql \
+                 php-xml \
+                 php-zip
+
+# Create the installation directory and download the file from WordPress.org:
+sudo mkdir -p /srv/www
+sudo chown www-data: /srv/www
+curl https://wordpress.org/latest.tar.gz | sudo -u www-data tar zx -C /srv/www
 	
