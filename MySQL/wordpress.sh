@@ -1,5 +1,5 @@
  #!/bin/bash 
-  # Work with Azure VM on this
+ # Work with Azure VM on this
   "sudo yum install httpd -y",
   "sudo yum install php php-mysql -y",
   "sudo systemctl restart httpd",
@@ -9,5 +9,5 @@
   "sudo tar -xf wordpress-4.0.32.tar.gz -C /var/www/html/",
   "sudo mv /var/www/html/wordpress/* /var/www/html/",
   "sudo chown -R apache:apache /var/www/html/",
-  "sudo systemctl restart httpd"
+  "sudo systemctl restart httpd" 
 	
