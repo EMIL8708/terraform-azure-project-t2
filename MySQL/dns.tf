@@ -6,7 +6,7 @@ provider "aws" {
 
 resource "aws_route53_record" "wordpress" {
   zone_id = "Z056284239QHHUXN5IEWO"
-  name    = "wordpress.muratgroup.link"
+  name    = "wordpress2.muratgroup.link"
   type    = "A"
   ttl     = 300
   records = [azurerm_public_ip.example.ip_address]
