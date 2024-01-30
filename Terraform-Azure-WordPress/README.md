@@ -191,7 +191,7 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   custom_data         = filebase64("wordpress.sh")
 ```
 
-# Documentation for output.tf
+# Documentation for output.tf file
 # OUTPUT
 
 Output values make information about your infrastructure available on the command line, and can expose information for other Terraform configurations to use. 
@@ -213,4 +213,35 @@ output sql_id {
 output ss_id {
     value = azurerm_linux_virtual_machine_scale_set.example.id
 }
+```
+
+
+# Documentation for wordpress.sh file
+# WORDPRESS
+
+```
+#!/bin/bash
+
+# Disable SELinux
+sudo setenforce 0
+
+# Install Apache and MySQL
+sudo yum install httpd -y
+sudo systemctl start httpd
+sudo systemctl enable httpd
+
+sudo yum install mysql-server -y
+sudo systemctl start mysqld
+sudo systemctl enable mysqld
+
+# Install WGET and Unzip
+sudo yum install wget unzip -y
+
+# Download and extract website template
+wget https://www.free-css.com/assets/files/free-css-templates/download/page296/finexo.zip
+unzip finexo.zip
+mv finexo-html/* /var/www/html/
+
+# Install PHP 7.3
+sudo yum install epel-release yum-utils -y
 ```
