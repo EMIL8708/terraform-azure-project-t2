@@ -54,8 +54,6 @@ Under Terraform-Azure-WordPress create a file  vnet.tf
 Use resource "azurerm_resource_group" "example"  to create resource group
 Use resource provider "azurerm" features to create provider resource
 
-# We strongly recommend using the required_providers block to set the
-# Azure Provider source and version being used
 
 ```
 resource "azurerm_resource_group" "example" {
