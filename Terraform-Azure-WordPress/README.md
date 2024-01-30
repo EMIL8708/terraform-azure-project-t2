@@ -106,6 +106,8 @@ resource "azurerm_subnet" "subnet3" {
 # Documentation for sql.tf file
 # MYSQL
 
+We used Azure Database for MySQL it's a fully managed database service, which means that Microsoft automates the management and maintenance of your infrastructure and database server, including routine updates, backups and security. Azure Database for MySQL is easy to set up, operate, and scale. Use resource https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mysql_server to create Database.
+
 ```
 resource "random_string" "random" {
   length           = 12
@@ -189,7 +191,9 @@ resource "azurerm_linux_virtual_machine_scale_set" "example" {
   custom_data         = filebase64("wordpress.sh")
 ```
 
-# OUTPUT.TF
+# Documentation for output.tf
+# OUTPUT
+
 Output values make information about your infrastructure available on the command line, and can expose information for other Terraform configurations to use. 
 Output values are similar to return values in programming languages.
 
