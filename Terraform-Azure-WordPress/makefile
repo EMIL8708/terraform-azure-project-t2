@@ -21,8 +21,10 @@ canadaeast:
 norwayeast:
 		terraform workspace new  norwayeast  || terraform workspace select  norwayeast
 		terraform init   
-		terraform apply -var-file envs/norwayeast.tfvars -auto-approve				  
+		terraform apply -var-file envs/norwayeast.tfvars -auto-approve	
+
 ##########################################################################################
+
 westeurope-destroy:
 		terraform workspace new  westeurope  || terraform workspace select  westeurope
 		terraform init  
