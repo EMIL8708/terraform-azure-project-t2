@@ -44,3 +44,17 @@ After adding them as collaborator, users will be able to add their SSH public ke
 
 Users will be able to clone the project into their locals with git clone command 
 
+
+
+SS.tf:
+
+resource "azurerm_linux_virtual_machine_scale_set" "example" {
+  name                = "example-vmss"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+  sku                 = "Standard_D2s_v3"
+  instances           = 1
+  admin_username      = "adminuser"
+  health_probe_id     = azurerm_lb_probe.example.id
+  custom_data         = filebase64("wordpress.sh")
+
