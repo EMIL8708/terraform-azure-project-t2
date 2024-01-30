@@ -45,7 +45,7 @@ Users will be able to clone the project into their locals with git clone command
 
 # Documentation for .tf files
 
-# RESOURCE GROUP + PROVIDER 
+# RESOURCE GROUP + VNET 
 Create a resource group. Configure the Microsoft Azure Provider. 
 Steps: 
 Create Azure_Three_tier application Folder with .gitignore and README.md files
@@ -58,19 +58,48 @@ Use resource provider "azurerm" features to create provider resource
 # Azure Provider source and version being used
 
 
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "=2.91.0"
-    }
+# Create a virtual network within the resource group
+resource "azurerm_virtual_network" "example" {
+  name                = "example-network"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
+  address_space       = ["10.0.0.0/16"]
+}
+
+resource "azurerm_subnet" "subnet1" {
+  name                 = "subnet1"
+  resource_group_name  = azurerm_resource_group.example.name
+  virtual_network_name = azurerm_virtual_network.example.name
+  address_prefixes     = ["10.0.1.0/24"]
+}
+
+resource "azurerm_subnet" "subnet2" {
+  name                 = "GatewaySubnet"
+  resource_group_name  = azurerm_resource_group.example.name
+  virtual_network_name = azurerm_virtual_network.example.name
+  address_prefixes     = ["10.0.2.0/24"]
+}
+
+resource "azurerm_subnet" "subnet3" {
+  name                 = "subnet3"
+  resource_group_name  = azurerm_resource_group.example.name
+  virtual_network_name = azurerm_virtual_network.example.name
+  address_prefixes     = ["10.0.3.0/24"]
+}
+
+resource "azurerm_network_interface" "example" {
+  name                = "example-nic"
+  location            = azurerm_resource_group.example.location
+  resource_group_name = azurerm_resource_group.example.name
+
+  ip_configuration {
+    name                          = "internal"
+    subnet_id                     = azurerm_subnet.subnet3.id
+    private_ip_address_allocation = "Dynamic"
+  
   }
 }
 
-# Configure the Microsoft Azure Provider
-provider "azurerm" {
-  features {}
-}
 
 # Create a resource group
 resource "azurerm_resource_group" "wordpress" {
@@ -142,19 +171,33 @@ Use resource "azurerm_network_security_group" "example" to create the Vnet
 Create vnet.tf file in folder with .gitignore and README.md files 
 
 ```
-resource "azurerm_virtual_network" "wordpress" {
-  name                = "wordpress-vnet"
+# Create a virtual network within the resource group
+resource "azurerm_virtual_network" "example" {
+  name                = "example-network"
+  resource_group_name = azurerm_resource_group.example.name
+  location            = azurerm_resource_group.example.location
   address_space       = ["10.0.0.0/16"]
-  location            = var.location
-  resource_group_name = azurerm_resource_group.wordpress.name
-  tags                = var.tags
 }
 
-resource "azurerm_subnet" "wordpress" {
-  name                 = "wordpress-subnet"
-  resource_group_name  = azurerm_resource_group.wordpress.name
-  virtual_network_name = azurerm_virtual_network.wordpress.name
+resource "azurerm_subnet" "subnet1" {
+  name                 = "subnet1"
+  resource_group_name  = azurerm_resource_group.example.name
+  virtual_network_name = azurerm_virtual_network.example.name
+  address_prefixes     = ["10.0.1.0/24"]
+}
+
+resource "azurerm_subnet" "subnet2" {
+  name                 = "GatewaySubnet"
+  resource_group_name  = azurerm_resource_group.example.name
+  virtual_network_name = azurerm_virtual_network.example.name
   address_prefixes     = ["10.0.2.0/24"]
+}
+
+resource "azurerm_subnet" "subnet3" {
+  name                 = "subnet3"
+  resource_group_name  = azurerm_resource_group.example.name
+  virtual_network_name = azurerm_virtual_network.example.name
+  address_prefixes     = ["10.0.3.0/24"]
 }
 
 resource "azurerm_public_ip" "wordpress" {
